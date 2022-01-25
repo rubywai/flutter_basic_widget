@@ -1,0 +1,38 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  const FirstApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+       appBar: AppBar(),
+       body: Center(
+         child: RichText(
+           text: const TextSpan(
+             children: [
+               TextSpan(text: 'H',style: TextStyle(color : Colors.blue,fontSize: 25),),
+               TextSpan(text: 'E',style: TextStyle(color : Colors.red,fontSize: 35)),
+               TextSpan(text: 'L',style: TextStyle(color : Colors.green,fontSize: 35)),
+               TextSpan(text: 'L',style: TextStyle(color : Colors.pink,fontSize: 35)),
+               TextSpan(text: 'O',style: TextStyle(color : Colors.black,fontSize: 35)),
+             ]
+           ),
+         ),
+       )
+       );
+  }
+}
