@@ -1,0 +1,39 @@
+import 'package:flutter/material.dart';
+
+//Google => Material 
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+void main(){
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FirstApp(),
+    )
+  );
+}
+class FirstApp extends StatelessWidget {
+  const FirstApp({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+            print('Click');
+        },
+        child: Icon(Icons.access_alarm),
+      ),
+      body: const Center(child: Text('Hello')),
+      appBar:  AppBar(
+        centerTitle: true,
+        actions: [
+          Icon(Icons.settings,size: 30,color: Colors.red, ),
+          Center(child: Text('Setting'))
+        ],
+        leading: FlutterLogo(),
+        title: Text('First App'),
+      )
+    );
+  }
+}
