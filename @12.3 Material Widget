@@ -1,0 +1,27 @@
+import 'package:flutter/material.dart';
+
+//Google => Material 
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+void main(){
+  runApp(
+    const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FirstApp(),
+    )
+  );
+}
+class FirstApp extends StatelessWidget {
+  const FirstApp({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  Scaffold(
+      
+      appBar:  AppBar(
+        
+      )
+    );
+  }
+}
