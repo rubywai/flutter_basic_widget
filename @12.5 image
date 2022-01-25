@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  const FirstApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+       appBar: AppBar(),
+       body: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/IMG-20200708-WA0006.jpg/440px-IMG-20200708-WA0006.jpg')
+       );
+  }
+}
