@@ -1,0 +1,50 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+//Row Column Stack ListVeiw GridView
+//variable List Map Set
+// 6 3 3
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  const FirstApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+       appBar: AppBar(),
+       body: Column(children: [
+         Expanded(
+           flex: 6,
+           child: Container(
+             color: Colors.red,
+           ),
+         ),
+         Expanded(
+           flex: 3,
+           child: Container(
+             color: Colors.blue,
+           ),
+         ),
+         Flexible(
+           flex: 3,
+           child: Container(
+             color: Colors.green,
+           ),
+         )
+       ],),
+
+      
+       );
+  }
+}
