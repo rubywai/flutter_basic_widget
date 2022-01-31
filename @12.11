@@ -1,0 +1,76 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+//Row Column Wrap Stack  ListVeiw GridView
+//variable List Map Set
+// 6 3 3
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  const FirstApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+       appBar: AppBar(),
+       body: Center(
+         child: Column(
+           children: [
+             ElevatedButton.icon(
+               icon: Icon(Icons.add_a_photo),
+               onPressed: (){
+                    clickAction(context);
+               }, 
+               onLongPress: () => print('long press'),
+               style: ElevatedButton.styleFrom(
+                 primary: Colors.red,
+                 onPrimary: Colors.white,
+
+               ),
+               label: const Text('Elevated Buttton Clcik')),
+             OutlinedButton(
+               style: OutlinedButton.styleFrom(
+                 primary: Colors.red,
+                 side: const BorderSide(
+                   color: Colors.red,
+                   width: 3
+                 )
+                 
+               ),
+               onPressed: (){
+
+             }, 
+             child: const Text('Outlined Button')),
+             TextButton(
+               style: TextButton.styleFrom(
+                 primary: Colors.black
+               ),
+               onPressed: (){
+
+             }, child: const Text('Text Button'))
+           ],
+         ),
+       )
+       );
+  }
+  void clickAction(BuildContext context){
+    ScaffoldMessenger.of(context)
+    .showSnackBar(
+      
+      const SnackBar(
+        backgroundColor: Colors.blue,
+        content: Text('Elevated Button is Clicked'))
+    );
+  }
+}
+
