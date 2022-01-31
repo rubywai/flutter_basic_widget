@@ -1,0 +1,54 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+//Row Column Wrap Stack  ListVeiw GridView
+//variable List Map Set
+// 6 3 3
+void main() {
+  runApp(const MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  const FirstApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+       appBar: AppBar(),
+       body: Container(
+         width: double.infinity,
+         height: double.infinity,
+         color: Colors.black,
+         child: Wrap(
+           textDirection: TextDirection.ltr,
+           direction: Axis.horizontal,
+          verticalDirection:  VerticalDirection.down,
+           spacing: 8.0,
+           runSpacing: 38.0,
+           alignment: WrapAlignment.center,
+           
+          
+           children:
+          [
+            for(int i=0;i<20;i++)
+              ElevatedButton(
+                onPressed: (){
+
+                }, child: Text('Button $i'))
+         
+         ],),
+       )
+
+      
+       );
+  }
+}
+
