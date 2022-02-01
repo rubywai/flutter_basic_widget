@@ -1,0 +1,49 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+//Row Column Wrap Stack  ListVeiw GridView
+//variable List Map Set
+// 6 3 3
+//position
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  final List<String> _items = List.generate(1000, (index) => "Item $index");
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(),
+        body: ListView.builder(
+            itemCount: _items.length,
+            itemBuilder: (BuildContext context, int index) {
+              return InkWell(
+                onTap: () =>
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(_items[index]),
+                  action: SnackBarAction(
+                    label: 'Cancel',
+                    onPressed: (){},
+                  ),
+                )),
+                child: Card(
+                    elevation: 8.0,
+                    child: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(_items[index]),
+                    )),
+              );
+            }));
+  }
+}
+
