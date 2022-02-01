@@ -1,0 +1,61 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+//Row Column Wrap Stack  ListVeiw GridView
+//variable List Map Set
+// 6 3 3
+//position
+void main() {
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  final List<String> _items = List.generate(1000, (index) => "Item $index");
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(),
+        body: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 150,
+                mainAxisSpacing: 3.0,
+                crossAxisSpacing: 3.0
+            ),
+            itemBuilder: _item),
+            );
+  }
+
+  Widget _item(BuildContext context, int index) {
+    if(index %7 == 0){
+      return ElevatedButton(onPressed: (){
+         ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(_items[index])));
+
+      }, child: Text(_items[index]));
+    }
+    return
+     InkWell(
+      onTap: (){
+        ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(_items[index])));
+      },
+      child: Card(
+        margin: EdgeInsets.zero,
+        child: Container(
+          color: Colors.yellow,
+          alignment: Alignment.center,
+          child: Text(_items[index])),
+      ),
+    );
+  }
+}
+
