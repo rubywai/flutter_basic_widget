@@ -1,0 +1,70 @@
+import 'package:flutter/material.dart';
+
+//Google => Material
+//Iphone => Cupertino
+//Widget => less ,ful
+//debug //release // hybrid
+//Container
+//project file network memory
+//Row Column Wrap Stack  ListVeiw GridView
+//variable List Map Set
+// 6 3 3
+//position
+void main() {
+  runApp(MaterialApp(
+    theme: ThemeData.dark(),
+    debugShowCheckedModeBanner: false,
+    home: FirstApp(),
+  ));
+}
+
+class FirstApp extends StatelessWidget {
+  final List<Person> _personList = [
+    Person('https://randomuser.me/api/portraits/women/36.jpg', 'Su Su', '@susus'),
+    Person('https://randomuser.me/api/portraits/women/37.jpg', 'Ma Ma', '@mama'),
+    Person('https://randomuser.me/api/portraits/women/38.jpg', 'Aye Aye', '@ayeaye'),
+    Person('https://randomuser.me/api/portraits/women/39.jpg', 'Christna', '@christ'),
+    Person('https://randomuser.me/api/portraits/women/40.jpg', 'Su Su', '@susus'),
+
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        title: Text('Contact List'),
+        centerTitle: true,
+      ),
+      body: ListView.builder(
+        itemCount: _personList.length,
+        itemBuilder: (BuildContext context,int position){
+            return _personItem(_personList[position]);
+        }
+        ),
+    
+    );
+  }
+  Widget _personItem(Person person){
+    return ListTile(
+        leading: CircleAvatar(
+          radius: 30,
+          backgroundImage : NetworkImage(person.imageUrl),
+        ),
+        title: Text(person.name),
+        subtitle: Text(person.id),
+        trailing: ElevatedButton(
+          onPressed: () {},
+          child: Text('Follow'),
+        ),
+      );
+  }
+}
+class Person{
+  final String imageUrl;
+  final String name;
+  final String id;
+
+  Person(this.imageUrl, this.name, this.id);
+  
+}
+
