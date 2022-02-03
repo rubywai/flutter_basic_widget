@@ -1,0 +1,149 @@
+import 'package:flutter/material.dart';
+
+void main(){
+  runApp(MaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
+}
+class MyApp extends StatefulWidget {
+  const MyApp({ Key? key }) : super(key: key);
+
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+ final TextEditingController _name = TextEditingController();
+ final TextEditingController _password = TextEditingController();
+ final TextEditingController _address = TextEditingController();
+ final List<bool> _hoobies = [false,false,false];
+ final List<String> _hobbyValue = ["Reading","Swimming","Walking"];
+ final List<String> _gender = ["Male","Female"];
+ String _genderValue = "Male";
+  @override
+  void initState() {
+    super.initState();
+    _name.text = "Initial Name";
+  
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            // ignore: prefer_const_literals_to_create_immutables
+            children: [
+               TextField(
+                controller: _name,
+                decoration: const InputDecoration(
+                  label: Text('Name'),
+                  suffixIcon: Icon(Icons.person),
+                  hintText: 'Enter your name',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20)
+                    )
+                  )
+                ),
+              ),
+               TextField(
+                controller: _password,
+                obscureText: true,
+                decoration: const InputDecoration(
+                  hintText: 'Enter Password',
+                  labelText: 'Password',
+                  suffixIcon: Icon(Icons.visibility)
+                ),
+              ),
+               TextField(
+                controller:  _address,
+                minLines: 2,
+                maxLines : 5,
+                decoration: const InputDecoration(
+                  hintText: 'Enter your address',
+                  labelText: 'Address'
+                ),
+              ),
+              ElevatedButton(onPressed: (){
+                  setState(() {
+                  });
+              }, child: Text('Save')),
+              Card(
+                margin: EdgeInsets.zero,
+                child: CheckboxListTile(
+                  title: Text('Reading'),
+                  value: _hoobies[0], onChanged: ( check){
+                    setState(() {
+                      _hoobies[0] = check!;
+                    });
+        
+                }),
+              ),
+               Card(
+                 margin: EdgeInsets.zero,
+                child: CheckboxListTile(
+                  activeColor: Colors.red,
+                  checkColor: Colors.blue,
+                  title: Text('Swimming'),
+                  value: _hoobies[1], onChanged: ( check){
+                     setState(() {
+                      _hoobies[1] = check!;
+                    });
+        
+                }),
+              ),
+               Card(
+                 margin: EdgeInsets.zero,
+                child: CheckboxListTile(
+                  title: Text('Walking'),
+                  value: _hoobies[2], onChanged: ( check){
+                  setState(() {
+                      _hoobies[2] = check!;
+                    });
+                }),
+              ),
+              Column(children: [
+                  RadioListTile(
+                    title: Text(_gender[0]),
+                    value: _gender[0],
+                     groupValue: _genderValue, 
+                     onChanged: (select){
+                       setState(() {
+                          _genderValue = _gender[0];
+                       });
+        
+                  }),
+                  RadioListTile(
+                    title: Text(_gender[1]),
+                    value: _gender[1],
+                     groupValue: _genderValue, 
+                     onChanged: (select){
+                       setState(() {
+                         _genderValue = _gender[1];
+                       });
+                    
+                  })
+              ],),
+              Text('Your information is\nName : ${_name.text}\nPassword is'
+              ' ${_password.text} \nAddress is  ${_address.text} \n Hobbies are ${_hobbie()}\n'
+             'Gender is $_genderValue ')
+            ],
+          ),
+        ),
+      ),
+      
+    );
+  }
+  String _hobbie(){
+    String hobby = "";
+    for(int i=0;i<_hoobies.length;i++){
+      if(_hoobies[i])
+       hobby += _hobbyValue[i] + " ";
+    }
+    return hobby;
+  }
+}
