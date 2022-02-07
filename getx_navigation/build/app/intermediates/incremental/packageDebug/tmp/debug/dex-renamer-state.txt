@@ -1,0 +1,4 @@
+#Tue Jan 25 22:02:12 MMT 2022
+base.0=/Users/waiphyoaung/Flutter Projects/example_app/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
