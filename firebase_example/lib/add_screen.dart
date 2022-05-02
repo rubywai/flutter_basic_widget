@@ -85,7 +85,7 @@ class _AddScreenState extends State<AddScreen> {
       _success = false;
       _error = false;
     });
-    _contacts.add(Person(_name.text, _age.text, _address.text)).then((value) {
+    _contacts.add(Person(_name.text, _age.text, _address.text,DateTime.now().microsecondsSinceEpoch)).then((value) {
       setState(() {
         _loading = false;
         _success = true;

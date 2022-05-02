@@ -10,6 +10,7 @@ class Home extends StatelessWidget {
       .withConverter<Person>(
           fromFirestore: (snapshot, _) => Person.fromMap(snapshot.data()!),
           toFirestore: (person, _) => person.toMap())
+         .orderBy("timestamp",descending: true)
       .snapshots();
   @override
   Widget build(BuildContext context) {
