@@ -10,8 +10,8 @@ class Home extends StatelessWidget {
       .withConverter<Person>(
           fromFirestore: (snapshot, _) => Person.fromMap(snapshot.data()!),
           toFirestore: (person, _) => person.toMap())
-         //.orderBy("timestamp",descending: true)
-         .where("name",isNotEqualTo: "Aye Aye")
+          .orderBy("timestamp",descending: true)
+         //.where("name",isNotEqualTo: "Aye Aye")
       .snapshots();
   @override
   Widget build(BuildContext context) {
@@ -39,6 +39,9 @@ class Home extends StatelessWidget {
                       print(contactDoc.id);
                   return Card(
                     child: ListTile(
+                      leading: (contactDoc.data().profileUrl != null) ? Image.network(contactDoc.data().profileUrl!,
+                      width: 80,
+                      ) : const SizedBox(),
                       title: Text(contactDoc.data().name ?? ''),
                       trailing: Text(contactDoc.data().age ?? ''),
                       subtitle: Text(contactDoc.data().address ?? ''),

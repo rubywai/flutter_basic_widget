@@ -3,15 +3,18 @@ class Person{
   String? age;
   String? address;
   int? timestamp;
-  Person(this.name,this.age,this.address,this.timestamp);
+  String? profileUrl;
+  Person(this.name,this.age,this.address,this.timestamp,this.profileUrl);
 
  factory Person.fromMap(Map map){
-   return Person(map['name'], map['age'], map['address'],map['timestamp']);
+   return Person(map['name'], map['age'], map['address'],map['timestamp'],
+   map['profileUrl']);
   }
   Map<String,dynamic> toMap() =>  {
     'name' : name,
     'age' : age,
     'address' : address,
-    'timestamp':timestamp
+    'timestamp':timestamp,
+    'profileUrl' : profileUrl
   };
 }
