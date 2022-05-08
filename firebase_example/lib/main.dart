@@ -1,7 +1,8 @@
 
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_example/home.dart';
+import 'package:firebase_example/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() async{
@@ -15,7 +16,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: Scaffold(
+        body : StreamBuilder<User?>(
+          stream: _isLogin(),
+          builder: (context,snapshot){
+            if(snapshot.connectionState == ConnectionState.waiting){
+              return const Center(child: CircularProgressIndicator(),);
+            }
+            User? user = snapshot.data;
+            if(user == null){
+              return LoginScreen();
+            }
+            return Home();
+            
+          },
+        )
+      )
     );
   }
+}
+Stream<User?> _isLogin(){
+  return FirebaseAuth.instance.authStateChanges();
 }

@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_example/add_screen.dart';
 import 'package:firebase_example/model/person.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,12 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Firebase Tutorial')),
+      appBar: AppBar(title: const Text('Firebase Tutorial'),
+      actions: [
+        IconButton(onPressed: (){
+            FirebaseAuth.instance.signOut();
+        }, icon: Icon(Icons.exit_to_app))
+      ],),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
