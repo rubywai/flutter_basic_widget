@@ -1,0 +1,43 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
+void main() {
+  runApp( MyApp());
+}
+class MyApp extends StatefulWidget {
+   MyApp({ Key? key }) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  bool fistWidget = true;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home : Scaffold(
+        appBar: AppBar(title: const Text('Animation Lesson'),),
+        body: Center(
+          child: AnimatedCrossFade(
+            firstCurve: Curves.bounceIn,
+            secondCurve: Curves.bounceOut,
+            firstChild: const FlutterLogo(size: 200,),
+            secondChild: const Icon(Icons.phone,size: 200,),
+            crossFadeState: fistWidget ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+            duration: const Duration(seconds : 3),
+          )
+        ),
+        floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.settings),
+          onPressed: (){
+            setState(() {
+              fistWidget = fistWidget == true ? false : true;
+            });
+          },
+        ),
+      )
+    );
+  }
+}
