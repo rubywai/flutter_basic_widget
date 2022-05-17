@@ -1,0 +1,32 @@
+//media query
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+    );
+  }
+}
+class Home extends StatelessWidget {
+  const Home({ Key? key }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    MediaQueryData mediaQuery= MediaQuery.of(context);
+    return Scaffold(
+      appBar: AppBar(title: Text('Media Query')),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          print('width is ${mediaQuery.size.width} height is ${mediaQuery.size.height} orientation is ${mediaQuery.orientation}');
+        },
+      ),
+      
+    );
+  }
+}
