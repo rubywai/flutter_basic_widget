@@ -1,0 +1,41 @@
+//ClipRect ClipRRect ClipOval ClipPath
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+    );
+  }
+}
+class Home extends StatefulWidget {
+  const Home({ Key? key }) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Clipping')),
+      body: Center(
+       child: ClipOval(
+         child: Align(
+           widthFactor: 1,
+           heightFactor: 1,
+           child: Container(
+             color: Colors.green,
+             child: FlutterLogo(size: 200,))),
+       ),
+      )
+    );
+  }
+}
+
