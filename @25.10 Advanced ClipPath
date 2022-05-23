@@ -1,0 +1,64 @@
+//ClipRect ClipRRect ClipOval ClipPath
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+    );
+  }
+}
+class Home extends StatefulWidget {
+  const Home({ Key? key }) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Clipping')),
+      body: Center(
+        child: ClipPath(
+          clipper: FiveSquare(),
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.blue,
+          ),
+        ),
+      )
+    );
+  }
+}
+class FiveSquare extends CustomClipper<Path>{
+  @override
+  Path getClip(Size size) {
+    double width = size.width;
+    double height = size.height;
+    Path path = Path();
+    path.moveTo(width/2, 0);
+    path.lineTo(0, height/3);
+    path.lineTo(width/5, height);
+    path.quadraticBezierTo(width/4, height-50, width/2, height);
+    path.lineTo(width/2, height);
+    path.quadraticBezierTo(width*0.75, height-100, width-width/5,height);
+    path.lineTo(width-width/5, height);
+    path.lineTo(width, height/3);
+   
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(covariant CustomClipper<Path> oldClipper) => true;
+
+}
+
