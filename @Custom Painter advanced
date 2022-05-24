@@ -1,0 +1,96 @@
+//ClipRect ClipRRect ClipOval ClipPath
+//Painting
+import 'package:flutter/material.dart';
+import 'dart:ui' as ui;
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Home(),
+    );
+  }
+}
+class Home extends StatefulWidget {
+  const Home({ Key? key }) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Clipping')),
+      body: Center(
+        child: CustomPaint(
+          foregroundPainter: RPSCustomPainter(),
+          child: Container(
+            width: 300,
+            height: 300,
+            color: Colors.green,
+          ),
+        ),
+      )
+    );
+  }
+}
+class MyPainter extends CustomPainter{
+  @override
+  void paint(Canvas canvas, Size size) {
+    double width = size.width;
+    double height = size.height;
+    Paint paint = Paint();
+    paint.color = Colors.red;
+    paint.strokeWidth = 3;
+    paint.style = PaintingStyle.stroke;
+    
+    canvas.drawCircle(Offset(width/2,height/2), 100, paint);
+
+    
+   
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+
+}
+
+class RPSCustomPainter extends CustomPainter{
+  
+  @override
+  void paint(Canvas canvas, Size size) {
+    
+    
+
+  Paint paint0 = Paint()
+      ..color = const Color.fromARGB(255, 33, 150, 243)
+      ..style = PaintingStyle.fill
+      ..strokeWidth = 1.0;
+    paint0.shader = ui.Gradient.linear(Offset(size.width*0.50,size.height*0.00),Offset(size.width*1.00,size.height*0.86),[Color(0xffcc2f10),Color(0xffffffff)],[0.00,1.00]); 
+         
+    Path path0 = Path();
+    path0.moveTo(size.width*0.5290333,size.height*0.3960333);
+    path0.quadraticBezierTo(size.width*0.3653000,size.height*0.0018667,size.width*0.1784667,size.height*0.1065000);
+    path0.cubicTo(size.width*-0.0096000,size.height*0.1821667,size.width*0.2809667,size.height*0.4024667,size.width*0.2668000,size.height*0.4974667);
+    path0.quadraticBezierTo(size.width*0.3859333,size.height*0.6725000,size.width*0.5436667,size.height*0.8621333);
+    path0.quadraticBezierTo(size.width*0.6915333,size.height*0.7345000,size.width*0.7673333,size.height*0.6178000);
+    path0.cubicTo(size.width*1.0021333,size.height*0.4047000,size.width*0.7553667,size.height*0.1512667,size.width*0.8015333,size.height*0.0786000);
+    path0.quadraticBezierTo(size.width*0.6277000,size.height*0.0204000,size.width*0.5290333,size.height*0.3960333);
+    path0.close();
+
+    canvas.drawPath(path0, paint0);
+  
+    
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+  
+}
